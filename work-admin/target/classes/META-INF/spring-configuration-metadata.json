@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "spring.datasource",
+      "type": "com.griftt.lifemix.core.properties.DuridConfigProperties",
+      "sourceType": "com.griftt.lifemix.core.properties.DuridConfigProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.datasource.dev",
+      "type": "com.griftt.lifemix.core.properties.SQLConnectParmter",
+      "sourceType": "com.griftt.lifemix.core.properties.DuridConfigProperties"
+    },
+    {
+      "name": "spring.datasource.druid-common-properties",
+      "type": "com.griftt.lifemix.core.properties.DruidCommonProperties",
+      "sourceType": "com.griftt.lifemix.core.properties.DuridConfigProperties"
+    },
+    {
+      "name": "spring.datasource.prod",
+      "type": "com.griftt.lifemix.core.properties.SQLConnectParmter",
+      "sourceType": "com.griftt.lifemix.core.properties.DuridConfigProperties"
+    }
+  ],
+  "hints": []
+}

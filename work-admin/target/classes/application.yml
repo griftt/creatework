@@ -1,0 +1,70 @@
+server:
+  port: 8181
+  max-http-header-size: 10240
+
+servlet:
+  multipart:
+    max-request-size: 1MB
+    max-file-size: 100MB
+
+mybatis-plus:
+  typeAliasesPackage: com.griftt.biz.entity
+  configuration:
+    call-setters-on-nulls: true
+
+devtools:
+  restart:
+    enabled: false
+    additional-paths: src/main/java
+    exclude: assets/**,pages/**
+
+# 下面为连接池的补充设置，应用到上面所有数据源中
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: dev
+  datasource:
+    dev:
+      url: jdbc:mysql://rds613943t1x67vo5hw7o.mysql.rds.aliyuncs.com:3306/sachet_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+      username: java_devp_dbuser
+      password: rJKYW88HHNaYaiDY
+      filters: wall,mergeStat
+      type: com.alibaba.druid.pool.DruidDataSource
+
+    prod:
+      url: jdbc:mysql://rds613943t1x67vo5hw7o.mysql.rds.aliyuncs.com:3306/sachet_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+      username: java_devp_dbuser
+      password: rJKYW88HHNaYaiDY
+      filters: wall,mergeStat
+      type: com.alibaba.druid.pool.DruidDataSource
+    druid-common-properties:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis : 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat,wall,log4j
+      logSlowSql: true
+
+
+
+#多数据源情况的配置
+guns:
+  muti-datasource:
+    open: false
+    url: jdbc:mysql://rds613943t1x67vo5hw7o.mysql.rds.aliyuncs.com:3306/sachet_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+    username: java_devp_dbuser
+    password: rJKYW88HHNaYaiDY
+    dataSourceNames:
+      - dataSourceGuns
+      - dataSourceBiz

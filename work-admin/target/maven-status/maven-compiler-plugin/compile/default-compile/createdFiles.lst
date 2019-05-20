@@ -1,0 +1,10 @@
+com\griftt\lifemix\core\properties\DuridConfigProperties.class
+com\griftt\lifemix\filter\AuthFilter.class
+com\griftt\lifemix\core\config\WebConfig.class
+com\griftt\lifemix\CreateforworkApplication.class
+com\griftt\lifemix\core\properties\SQLConnectParmter.class
+com\griftt\lifemix\core\config\MybatisPlusConfig.class
+com\griftt\lifemix\controller\testController.class
+com\griftt\lifemix\core\config\DataSourceConfig.class
+META-INF\spring-configuration-metadata.json
+com\griftt\lifemix\core\properties\DruidCommonProperties.class
