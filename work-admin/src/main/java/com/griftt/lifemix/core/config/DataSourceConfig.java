@@ -68,7 +68,7 @@ public class DataSourceConfig {
         datasource.setTimeBetweenEvictionRunsMillis(druidCommonProperties.getTimeBetweenEvictionRunsMillis());
         datasource.setMinEvictableIdleTimeMillis(druidCommonProperties.getMinEvictableIdleTimeMillis());
         //datasource.setValidationQuery(validationQuery);
-        //datasource.setTestWhileIdle(druidCommonProperties.get) ;
+        //datasource.setTestWhileIdle(druidCommonProperties.get);
         datasource.setTestOnBorrow(druidCommonProperties.isTestOnBorrow());
         datasource.setTestOnReturn(druidCommonProperties.isTestOnReturn());
         //datasource.setPoolPreparedStatements(druidCommonProperties.is);
