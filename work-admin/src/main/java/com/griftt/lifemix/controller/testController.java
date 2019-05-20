@@ -38,4 +38,7 @@ public class testController {
         return actictyListMapper;
     }
 
+    public testController() {
+        System.err.println("controller 实例化");
+    }
 }

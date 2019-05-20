@@ -9,7 +9,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
+//@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
+@SpringBootApplication
+@MapperScan(basePackages = "com.griftt.biz.mapper")
+@ComponentScan(basePackages = "com.griftt")
 public class CreateforworkApplication {
     public static void main(String[] args) {
         SpringApplication.run(CreateforworkApplication.class, args);

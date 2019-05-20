@@ -35,18 +35,15 @@ import java.util.Map;
 
 @Configuration
 @Slf4j
-@MapperScan(basePackages = "com.griftt.biz.mapper")
-@ComponentScan(basePackages = "com.griftt.biz.servcie")
 public class DataSourceConfig {
 
     @Autowired
     private ApplicationContext context;
     //使用该实例读取项目资源路径下application.properties文件中的内容
-    @Autowired
+    //@Autowired
     DuridConfigProperties duridConfigProperties;
-
-    @Bean  		//产生bean实例加载进srping容器中,与spring配置文件中配置bean一样
-    @Primary  	//当有多个实现时以此为优先为准
+    //@Bean  		//产生bean实例加载进srping容器中,与spring配置文件中配置bean一样
+    //@Primary  	//当有多个实现时以此为优先为准
     public DruidDataSource getDataSource() throws Exception{
         log.info("数据源信息加载");
         String profile = context.getEnvironment().getActiveProfiles()[0];
@@ -85,7 +82,7 @@ public class DataSourceConfig {
         return datasource;
     }
 
-   @Bean 	//产生bean实例加载进srping容器中,与spring配置文件中配置bean一样
+   //@Bean 	//产生bean实例加载进srping容器中,与spring配置文件中配置bean一样
     public SqlSessionFactory sqlSessionFactory( DataSource ds) throws Exception{
         log.info("SqlSessionFactoryBean 信息加载 ");
         log.info("ds 信息加载 :{}",ds);

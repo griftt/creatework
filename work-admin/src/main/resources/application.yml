@@ -24,20 +24,20 @@ spring:
   profiles:
     active: @spring.active@
   datasource:
-    dev:
-      url: jdbc:mysql://rds613943t1x67vo5hw7o.mysql.rds.aliyuncs.com:3306/sachet_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
-      username: java_devp_dbuser
-      password: rJKYW88HHNaYaiDY
-      filters: wall,mergeStat
-      type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://rds613943t1x67vo5hw7o.mysql.rds.aliyuncs.com:3306/sachet_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+    username: java_devp_dbuser
+    password: rJKYW88HHNaYaiDY
+      #filters: wall,mergeStat
+    type: com.alibaba.druid.pool.DruidDataSource
 
-    prod:
-      url: jdbc:mysql://rds613943t1x67vo5hw7o.mysql.rds.aliyuncs.com:3306/sachet_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
-      username: java_devp_dbuser
-      password: rJKYW88HHNaYaiDY
-      filters: wall,mergeStat
-      type: com.alibaba.druid.pool.DruidDataSource
-    druid-common-properties:
+#    prod:
+#      url: jdbc:mysql://rds613943t1x67vo5hw7o.mysql.rds.aliyuncs.com:3306/sachet_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+#      username: java_devp_dbuser
+#      password: rJKYW88HHNaYaiDY
+#      filters: wall,mergeStat
+#      type: com.alibaba.druid.pool.DruidDataSource
+  # druid-common-properties:
+    druid:
       initialSize: 5
       minIdle: 5
       maxActive: 20
