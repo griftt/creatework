@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: TestService
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 13.471 s <<< FAILURE! - in TestService
-testMapper(TestService)  Time elapsed: 1.34 s  <<< ERROR!
-org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.griftt.biz.mapper.ActivityMapper.selectList
-	at TestService.testMapper(TestService.java:21)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.578 s <<< FAILURE! - in TestService
+testMapper(TestService)  Time elapsed: 0.01 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'activityMapper' for bean class [com.griftt.biz.mapper.ActivityMapper] conflicts with existing, non-compatible bean definition of same name and class [org.mybatis.spring.mapper.MapperFactoryBean]
 
