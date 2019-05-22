@@ -7,10 +7,41 @@ servlet:
     max-request-size: 1MB
     max-file-size: 100MB
 
+#mybatis-plus:
+#  typeAliasesPackage: com.griftt.biz.entity
+#  configuration:
+#    call-setters-on-nulls: true
+
 mybatis-plus:
+  mapper-locations: classpath*:com/griftt/biz/mapper/mapping/**Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
   typeAliasesPackage: com.griftt.biz.entity
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 2
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    #序列接口实现类配置
+    #key-generator: com.baomidou.springboot.xxx
+    #逻辑删除配置（下面3个配置）
+    logic-delete-value: 0
+    logic-not-delete-value: 1
+    #自定义SQL注入器
+    #sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    #自定义填充策略接口实现
+    #meta-object-handler: com.baomidou.springboot.xxx
   configuration:
-    call-setters-on-nulls: true
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+
+
+
 devtools:
   restart:
     enabled: false
@@ -24,20 +55,19 @@ spring:
   profiles:
     active: @spring.active@
   datasource:
-    url: jdbc:mysql://rds613943t1x67vo5hw7o.mysql.rds.aliyuncs.com:3306/sachet_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
-    username: java_devp_dbuser
-    password: rJKYW88HHNaYaiDY
-      #filters: wall,mergeStat
-    type: com.alibaba.druid.pool.DruidDataSource
+    dev:
+      url: jdbc:mysql://rds613943t1x67vo5hw7o.mysql.rds.aliyuncs.com:3306/sachet_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+      username: java_devp_dbuser
+      password: rJKYW88HHNaYaiDY
+        #filters: wall,mergeStat
+      type: com.alibaba.druid.pool.DruidDataSource
 
-#    prod:
-#      url: jdbc:mysql://rds613943t1x67vo5hw7o.mysql.rds.aliyuncs.com:3306/sachet_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
-#      username: java_devp_dbuser
-#      password: rJKYW88HHNaYaiDY
-#      filters: wall,mergeStat
-#      type: com.alibaba.druid.pool.DruidDataSource
-  # druid-common-properties:
-    druid:
+    prod:
+       url: jdbc:mysql://rds613943t1x67vo5hw7o.mysql.rds.aliyuncs.com:3306/sachet_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+       username: java_devp_dbuser
+       password: rJKYW88HHNaYaiDY
+       type: com.alibaba.druid.pool.DruidDataSource
+    druid-common-properties:
       initialSize: 5
       minIdle: 5
       maxActive: 20
