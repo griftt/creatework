@@ -1,6 +1,5 @@
 package com.griftt.biz.model.params;
 
-import cn.stylefeng.roses.kernel.model.validator.BaseValidatingParam;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,7 +14,7 @@ import java.util.Date;
  * @since 2019-04-19
  */
 @Data
-public class ActivityParam implements Serializable, BaseValidatingParam {
+public class ActivityParam implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -180,7 +179,7 @@ public class ActivityParam implements Serializable, BaseValidatingParam {
     private Date createTimeMin;
     private Date createTimeMax;
 
-    @Override
+
     public String checkParam() {
         return null;
     }
