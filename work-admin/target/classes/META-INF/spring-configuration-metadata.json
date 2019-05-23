@@ -1,12 +1,32 @@
 {
   "groups": [
     {
+      "name": "mybatis-plus",
+      "type": "com.griftt.lifemix.core.properties.MybatisProperties",
+      "sourceType": "com.griftt.lifemix.core.properties.MybatisProperties"
+    },
+    {
       "name": "spring.datasource",
       "type": "com.griftt.lifemix.core.properties.DuridConfigProperties",
       "sourceType": "com.griftt.lifemix.core.properties.DuridConfigProperties"
     }
   ],
   "properties": [
+    {
+      "name": "mybatis-plus.call-setters-on-nulls",
+      "type": "java.lang.String",
+      "sourceType": "com.griftt.lifemix.core.properties.MybatisProperties"
+    },
+    {
+      "name": "mybatis-plus.mapper-location",
+      "type": "java.lang.String",
+      "sourceType": "com.griftt.lifemix.core.properties.MybatisProperties"
+    },
+    {
+      "name": "mybatis-plus.type-aliases-package",
+      "type": "java.lang.String",
+      "sourceType": "com.griftt.lifemix.core.properties.MybatisProperties"
+    },
     {
       "name": "spring.datasource.dev",
       "type": "com.griftt.lifemix.core.properties.SQLConnectParmter",
