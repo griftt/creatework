@@ -16,7 +16,7 @@ public class HandlerStrategyBeanDefinitionRegistryPostProcessor implements BeanD
             //新建一个bean扫描器
         //自定义代码可以参考Mybatis： org.mybatis.spring.mapper.MapperScannerConfigurer
         ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner(beanDefinitionRegistry);
-        scanner.addIncludeFilter(new AnnotationTypeFilter(HandlerStrategy.class));
+        scanner.addIncludeFilter( new AnnotationTypeFilter(HandlerStrategy.class));
         scanner.scan("com.griftt.lifemix.admin.model");
     }
 
