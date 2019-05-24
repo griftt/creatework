@@ -2,6 +2,7 @@ package com.griftt.lifemix.controller;
 
 import com.griftt.biz.entity.Activity;
 import com.griftt.biz.servcie.ActivityService;
+import com.griftt.lifemix.admin.model.WorkTypeOne;
 import com.griftt.lifemix.core.properties.DuridConfigProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -21,11 +23,14 @@ public class testController {
 
     @Autowired
     private ActivityService activityService;
+    @Autowired
+    private WorkTypeOne workTypeOne;
+
 
     @RequestMapping("/hello")
     @ResponseBody
-    public String hello(){
-        return "hello"+druid;
+    public String hello(HttpServletRequest request){
+        return "hello"+request.getContextPath()+"，"+request.getPathInfo()+workTypeOne;
     }
 
     @RequestMapping("/hello2")
