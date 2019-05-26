@@ -1,4 +1,4 @@
-package com.griftt.lifemix.core.extends.interceptor
+/*package com.griftt.lifemix.core.extends.interceptor*/
 
 
 
@@ -77,4 +77,4 @@ package com.griftt.lifemix.core.extends.interceptor
         }
     }*/
 
-}
+//}

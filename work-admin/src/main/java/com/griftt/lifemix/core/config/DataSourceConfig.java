@@ -79,7 +79,7 @@ public class DataSourceConfig {
         try {
             datasource.setFilters(environment.getProperty("spring.datasource.filters"));
         } catch (SQLException e) {
-            //log.error("druid configuration initialization filter", e);
+            log.error("druid configuration initialization filter", e);
         }
        // datasource.setConnectionProperties(connectionProperties);
         return datasource;
@@ -88,7 +88,7 @@ public class DataSourceConfig {
     /**产生bean实例加载进srping容器中,与spring配置文件中配置bean一样
      *
      */
-     // @Bean
+     //@Bean
     public SqlSessionFactory sqlSessionFactory( DataSource ds) throws Exception{
         log.info("SqlSessionFactoryBean 信息加载 ");
         log.info("ds 信息加载 :{}",ds);
