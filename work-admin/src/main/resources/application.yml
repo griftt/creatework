@@ -1,5 +1,5 @@
 server:
-  port: 8181
+  port: 8080
   max-http-header-size: 10240
 #  servlet:
 #    context-path: /admin
