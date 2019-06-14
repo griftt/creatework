@@ -41,7 +41,6 @@ public class MybatisPlusConfig {
     public DataScopeInterceptor dataScopeInterceptor() {
         return new DataScopeInterceptor();
     }*/
-
     /**
      * 乐观锁mybatis插件
      */
@@ -49,5 +48,8 @@ public class MybatisPlusConfig {
     public OptimisticLockerInterceptor optimisticLockerInterceptor() {
         return new OptimisticLockerInterceptor();
     }
+
+
+
 
 }

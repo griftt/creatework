@@ -1,8 +1,8 @@
 server:
   port: 8181
   max-http-header-size: 10240
-#  servlet:
-#    context-path: /admin
+  #servlet:
+   #   context-path: /admin
 
 servlet:
   multipart:
@@ -52,7 +52,7 @@ devtools:
 # 下面为连接池的补充设置，应用到上面所有数据源中
 spring:
   main:
-    allow-bean-definition-overriding: true
+    allow-bean-definition-overriding:  true
   profiles:
     active: dev
   datasource:

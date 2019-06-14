@@ -11,8 +11,6 @@
     <artifactId>work-admin</artifactId>
     <packaging>war</packaging>
     <dependencies>
-
-
         <dependency>
             <groupId>com.griftt.lifemix</groupId>
             <artifactId>work-biz</artifactId>

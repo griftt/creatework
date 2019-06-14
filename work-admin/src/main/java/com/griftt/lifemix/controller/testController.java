@@ -23,6 +23,7 @@ public class testController {
 
     @Autowired
     private ActivityService activityService;
+
     @Autowired
     private WorkTypeOne workTypeOne;
 
@@ -41,6 +42,15 @@ public class testController {
        System.err.println(actictyList);
         System.err.println(actictyListMapper);
         return actictyListMapper;
+    }
+
+
+    @RequestMapping("/tra")
+    @ResponseBody
+    public Object tra(){
+        activityService.updateOne();
+        activityService.updateTwo();
+        return "ok";
     }
 
     public testController() {
