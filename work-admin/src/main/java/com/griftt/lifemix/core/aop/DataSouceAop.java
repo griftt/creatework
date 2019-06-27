@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Method;
+
 @Slf4j
 @Aspect
 @Component
@@ -39,7 +41,8 @@ public class DataSouceAop implements Ordered {
         MethodSignature methodSignature = (MethodSignature) signature;
         //获取当前类
         Class<?> targetClass = point.getTarget().getClass();
-        DataSource datasource = targetClass.getAnnotation(DataSource.class);
+        Method currentMethod = targetClass.getMethod(methodSignature.getName(), methodSignature.getParameterTypes());
+        DataSource datasource = currentMethod.getAnnotation(DataSource.class);
         if (datasource != null) {
             DataSourceContextHolder.setDataSourceType(datasource.name());
             log.info("设置数据源为：" + datasource.name());
