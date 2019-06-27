@@ -18,6 +18,7 @@ import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.JdkRegexpMethodPointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -27,6 +28,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -35,19 +37,20 @@ import java.util.Map;
 
 @Configuration
 @Slf4j
+@ConditionalOnProperty(prefix = "guns.muti-datasource", name = "open", havingValue = "false", matchIfMissing = true)
+@EnableTransactionManagement
 public class DataSourceConfig {
 
     @Autowired
     private ApplicationContext context;
-
-
     //使用该实例读取项目资源路径下application.properties文件中的内容
     @Autowired
     DuridConfigProperties duridConfigProperties;
 
+
     @Bean  		//产生bean实例加载进srping容器中,与spring配置文件中配置bean一样
     @Primary  	//当有多个实现时以此为优先为准
-    public DruidDataSource getDataSource() throws Exception{
+    public DruidDataSource primaryDataSource() throws Exception{
         log.info("数据源信息加载");
         String profile = context.getEnvironment().getActiveProfiles()[0];
         org.springframework.core.env.Environment environment = context.getEnvironment();
@@ -185,5 +188,8 @@ public class DataSourceConfig {
         return new DefaultPointcutAdvisor(druidStatPointcut(), druidStatInterceptor());
     }
 
+    public DataSourceConfig (){
+        System.err.println("单数据源 启动");
+    }
 
 }

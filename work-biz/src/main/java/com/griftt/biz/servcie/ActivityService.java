@@ -1,5 +1,6 @@
 package com.griftt.biz.servcie;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.griftt.biz.entity.Activity;
 import com.griftt.biz.mapper.ActivityMapper;
@@ -15,13 +16,16 @@ import java.util.List;
 @Service
 public class ActivityService extends ServiceImpl<ActivityMapper, Activity> {
 
-
+    @DataSource(name = "dataSource")
     public List<Activity> getActictyList(){
         return getBaseMapper().selectList(null);
     }
+
+
     public List<Activity> getActictyListMapper(){
         return getBaseMapper().getActivity();
     }
+
     @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Exception.class)
     @Async
     public void updateOne(){

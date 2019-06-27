@@ -1,5 +1,6 @@
 package com.griftt.lifemix.controller;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import com.griftt.biz.entity.Activity;
 import com.griftt.biz.servcie.ActivityService;
 import com.griftt.lifemix.admin.model.WorkTypeOne;
@@ -30,18 +31,19 @@ public class testController {
 
     @RequestMapping("/hello")
     @ResponseBody
-    public String hello(HttpServletRequest request){
-        return "hello"+request.getContextPath()+"，"+request.getPathInfo()+workTypeOne;
+    @DataSource(name = "dataSource")
+    public  List<Activity> hello(HttpServletRequest request){
+        List<Activity> actictyList = activityService.getActictyList();
+        System.err.println(actictyList);
+        return actictyList;
     }
 
     @RequestMapping("/hello2")
     @ResponseBody
     public Object hell2(){
-        List<Activity> actictyList = activityService.getActictyList();
-        List<Activity> actictyListMapper = activityService.getActictyListMapper();
-       System.err.println(actictyList);
-        System.err.println(actictyListMapper);
-        return actictyListMapper;
+        List<Activity> actictyList = activityService.getActictyListMapper();
+        System.err.println(actictyList);
+        return actictyList;
     }
 
 

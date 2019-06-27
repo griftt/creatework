@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
@@ -15,6 +16,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @MapperScan(basePackages = "com.griftt.biz.mapper")
 @ComponentScan(basePackages = "com.griftt")
 @EnableAsync
+@EnableAspectJAutoProxy(proxyTargetClass=true)
 public class CreateforworkApplication {
     public static void main(String[] args) {
         SpringApplication.run(CreateforworkApplication.class, args);
