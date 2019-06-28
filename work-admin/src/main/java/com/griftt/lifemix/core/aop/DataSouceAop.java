@@ -11,6 +11,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +20,7 @@ import java.lang.reflect.Method;
 @Slf4j
 @Aspect
 @Component
+@ConditionalOnProperty(prefix = "guns.muti-datasource", name = "open",havingValue = "true")
 public class DataSouceAop implements Ordered {
 
     @Autowired
@@ -26,7 +28,6 @@ public class DataSouceAop implements Ordered {
 
     @Pointcut("@annotation(com.griftt.biz.annotation.DataSource)")
     public void cut(){
-
     }
 
 
