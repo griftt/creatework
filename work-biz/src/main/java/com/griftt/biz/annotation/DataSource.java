@@ -1,6 +1,4 @@
-package com.griftt.lifemix.core.annotation;
-
-import net.bytebuddy.implementation.bind.annotation.RuntimeType;
+package com.griftt.biz.annotation;
 
 import java.lang.annotation.*;
 

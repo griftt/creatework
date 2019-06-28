@@ -2,7 +2,7 @@ package com.griftt.lifemix.core.aop;
 
 import cn.stylefeng.roses.core.config.properties.MutiDataSourceProperties;
 import cn.stylefeng.roses.core.mutidatasource.DataSourceContextHolder;
-import com.griftt.lifemix.core.annotation.DataSource;
+import com.griftt.biz.annotation.DataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -24,7 +24,7 @@ public class DataSouceAop implements Ordered {
     @Autowired
     private MutiDataSourceProperties mutiDataSourceProperties;
 
-    @Pointcut("@annotation(com.griftt.lifemix.core.annotation.DataSource)")
+    @Pointcut("@annotation(com.griftt.biz.annotation.DataSource)")
     public void cut(){
 
     }

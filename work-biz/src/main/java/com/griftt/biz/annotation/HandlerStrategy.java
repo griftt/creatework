@@ -1,7 +1,5 @@
-package com.griftt.lifemix.core.annotation;
+package com.griftt.biz.annotation;
 
-
-import org.springframework.stereotype.Component;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

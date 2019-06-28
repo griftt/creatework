@@ -1,7 +1,7 @@
 package com.griftt.biz.servcie;
 
-import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.griftt.biz.annotation.DataSource;
 import com.griftt.biz.entity.Activity;
 import com.griftt.biz.mapper.ActivityMapper;
 import org.springframework.scheduling.annotation.Async;

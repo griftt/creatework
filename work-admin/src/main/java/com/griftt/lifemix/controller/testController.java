@@ -1,9 +1,10 @@
 package com.griftt.lifemix.controller;
 
-import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
+import com.griftt.biz.annotation.DataSource;
 import com.griftt.biz.entity.Activity;
 import com.griftt.biz.servcie.ActivityService;
 import com.griftt.lifemix.admin.model.WorkTypeOne;
+import com.griftt.biz.annotation.Hello;
 import com.griftt.lifemix.core.properties.DuridConfigProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -31,7 +32,6 @@ public class testController {
 
     @RequestMapping("/hello")
     @ResponseBody
-    @DataSource(name = "dataSource")
     public  List<Activity> hello(HttpServletRequest request){
         List<Activity> actictyList = activityService.getActictyList();
         System.err.println(actictyList);
@@ -41,6 +41,16 @@ public class testController {
     @RequestMapping("/hello2")
     @ResponseBody
     public Object hell2(){
+        List<Activity> actictyList = activityService.getActictyListMapper();
+        System.err.println(actictyList);
+        return actictyList;
+    }
+
+
+    @RequestMapping("/aop")
+    @ResponseBody
+    @Hello
+    public Object aop(){
         List<Activity> actictyList = activityService.getActictyListMapper();
         System.err.println(actictyList);
         return actictyList;
