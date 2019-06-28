@@ -28,6 +28,8 @@ public class DataSouceAop implements Ordered {
 
     @Pointcut("@annotation(com.griftt.biz.annotation.DataSource)")
     public void cut(){
+
+
     }
 
 
