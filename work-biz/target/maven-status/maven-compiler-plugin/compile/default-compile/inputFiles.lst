@@ -6,11 +6,13 @@ D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\model\result\Gr
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\entity\GoodsSku.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\entity\Qrcode.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\model\result\LabelResult.java
+D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\annotation\DataSource.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\model\result\PlayerResult.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\entity\Activity.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\entity\OrderGoods.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\model\result\PresentResult.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\model\result\ActivityResult.java
+D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\annotation\HandlerStrategy.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\model\result\MessageResult.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\entity\DiscountRelease.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\model\params\UserParam.java
@@ -54,6 +56,7 @@ D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\model\result\Qr
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\entity\Present.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\entity\Category.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\model\params\ActivityParam.java
+D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\annotation\Hello.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\entity\Payment.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\model\result\GoodsCategoryResult.java
 D:\公司项目\creatework\work-biz\src\main\java\com\griftt\biz\model\result\SysparamResult.java

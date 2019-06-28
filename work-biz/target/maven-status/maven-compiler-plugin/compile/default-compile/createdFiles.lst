@@ -33,8 +33,10 @@ com\griftt\biz\model\result\GoodsResult.class
 com\griftt\biz\model\result\TryOutResult.class
 com\griftt\biz\model\result\GoodsLabelResult.class
 com\griftt\biz\entity\OrderGoods.class
+com\griftt\biz\annotation\HandlerStrategy.class
 com\griftt\biz\entity\Payment.class
 com\griftt\biz\model\result\GraphicResult.class
+com\griftt\biz\annotation\DataSource.class
 com\griftt\biz\model\result\CommentResult.class
 com\griftt\biz\model\params\ActivityParam.class
 com\griftt\biz\model\result\CategoryResult.class
@@ -46,6 +48,7 @@ com\griftt\biz\entity\Banner.class
 com\griftt\biz\entity\Join.class
 com\griftt\biz\model\result\PresentResult.class
 com\griftt\biz\model\result\PaymentResult.class
+com\griftt\biz\annotation\Hello.class
 com\griftt\biz\entity\GoodsLabel.class
 com\griftt\biz\entity\Cart.class
 com\griftt\biz\model\result\QrcodeResult.class
