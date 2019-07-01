@@ -89,7 +89,7 @@ spring:
 
 guns:
   muti-datasource:
-    open: false
+    open: true
     url: jdbc:mysql://localhost:3306/eureka?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
     username: root
     password: 123456

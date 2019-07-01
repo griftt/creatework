@@ -60,7 +60,8 @@ public class MultiDataSourceConfig {
     private ApplicationContext applicationContext;
 
     //获取数据默认数据库配置
-   public DruidDataSource primaryDataSource(DuridConfigProperties duridConfigProperties){
+    @Bean
+   public DruidDataSource primaryDataSource(@Qualifier("duridConfigProperties")  DuridConfigProperties duridConfigProperties){
        DruidDataSource druidDataSource = new DruidDataSource();
        //log.info("数据源信息加载");
        String profile = applicationContext.getEnvironment().getActiveProfiles()[0];
@@ -79,6 +80,7 @@ public class MultiDataSourceConfig {
    }
 
 
+
     //获取多数据源配置
     @Bean
     @ConfigurationProperties(prefix = "guns.muti-datasource")
@@ -86,7 +88,9 @@ public class MultiDataSourceConfig {
         return new MutiDataSourceProperties();
     }
 
-    public  DruidDataSource multiDataSource(  MutiDataSourceProperties mutiDataSourceProperties){
+
+    @Bean
+    public  DruidDataSource multiDataSource(@Qualifier("mutiDataSourceProperties")  MutiDataSourceProperties mutiDataSourceProperties){
         DruidDataSource druidDataSource = new DruidDataSource();
         mutiDataSourceProperties.config(druidDataSource);
         return druidDataSource;
@@ -98,18 +102,16 @@ public class MultiDataSourceConfig {
      * @param
      * @return
      */
-
-    @Bean
     //注入多数据源的切换类
-    public DynamicDataSource createMultiDataSource(@Qualifier("duridConfigProperties") DuridConfigProperties duridConfigProperties,
-                                                   @Qualifier("mutiDataSourceProperties")  MutiDataSourceProperties mutiDataSourceProperties  ){
-
-        System.err.println(duridConfigProperties);
+    @Bean
+    public DynamicDataSource createMultiDataSource(@Qualifier("primaryDataSource") DruidDataSource dataSource,
+                                                   @Qualifier("multiDataSource")  DruidDataSource multiDataSource  ){
+        /*System.err.println(duridConfigProperties);
         System.err.println(mutiDataSourceProperties);
-        DynamicDataSource dynamicDataSource = new DynamicDataSource();
         //配置数据源
         DruidDataSource dataSource = primaryDataSource(duridConfigProperties);
-        DruidDataSource multiDataSource = multiDataSource(mutiDataSourceProperties);
+        DruidDataSource multiDataSource = multiDataSource(mutiDataSourceProperties);*/
+        DynamicDataSource dynamicDataSource = new DynamicDataSource();
         try {
             dataSource.init();
             multiDataSource.init();
@@ -126,6 +128,9 @@ public class MultiDataSourceConfig {
         return dynamicDataSource;
 
     }
+
+
+
 
     /**
      *

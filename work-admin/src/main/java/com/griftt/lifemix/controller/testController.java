@@ -35,6 +35,8 @@ public class testController {
     public  List<Activity> hello(HttpServletRequest request){
         List<Activity> actictyList = activityService.getActictyList();
         System.err.println(actictyList);
+       // List<Activity> actictyList2 = activityService.getActictyListMapper();
+       // System.err.println(actictyList2);
         return actictyList;
     }
 

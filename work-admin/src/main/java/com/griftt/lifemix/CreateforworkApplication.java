@@ -10,6 +10,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
 //@SpringBootApplication
@@ -17,6 +18,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @ComponentScan(basePackages = "com.griftt")
 @EnableAsync
 @EnableAspectJAutoProxy(proxyTargetClass=true)
+@EnableTransactionManagement
 public class CreateforworkApplication {
     public static void main(String[] args) {
         SpringApplication.run(CreateforworkApplication.class, args);
