@@ -4,17 +4,21 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.griftt.biz.annotation.DataSource;
 import com.griftt.biz.entity.Activity;
 import com.griftt.biz.mapper.ActivityMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+
 
 import java.util.List;
-
 @Service
 public class ActivityService extends ServiceImpl<ActivityMapper, Activity> {
+
+
+
+
 
     @DataSource(name = "dataSource")
     public List<Activity> getActictyList(){
@@ -25,6 +29,8 @@ public class ActivityService extends ServiceImpl<ActivityMapper, Activity> {
     public List<Activity> getActictyListMapper(){
         return getBaseMapper().getActivity();
     }
+
+
 
     @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Exception.class)
     @Async
@@ -43,7 +49,6 @@ public class ActivityService extends ServiceImpl<ActivityMapper, Activity> {
         activity.setType(activity.getType()-3);
     }
     @Transactional(rollbackFor = Exception.class)
-
     public void updateTwo(){
         Activity activity = baseMapper.selectById(30);
         System.err.println("two:"+activity.getType());
@@ -52,7 +57,17 @@ public class ActivityService extends ServiceImpl<ActivityMapper, Activity> {
 
     }
 
-
-
+    /**
+     * 多数据源事务测试
+     */
+    @Transactional(rollbackFor = Exception.class)
+    @DataSource(name = "multiDataSource")
+    public void multiDataTran(){
+        Activity activity = baseMapper.selectById(3);
+        System.err.println("multi:"+activity.getType());
+        activity.setType(activity.getType()+2);
+        baseMapper.updateById(activity);
+        System.out.println("修改主数据库");
+    }
 
 }

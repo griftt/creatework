@@ -45,7 +45,7 @@ mybatis-plus:
 
 devtools:
   restart:
-    enabled: false
+    enabled: true
     additional-paths: src/main/java
     exclude: assets/**,pages/**
 

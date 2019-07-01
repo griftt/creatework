@@ -97,6 +97,8 @@ public class DataSourceConfig {
         log.info("ds 信息加载 :{}",ds);
         SqlSessionFactoryBean sqlSFB = new SqlSessionFactoryBean();
         sqlSFB.setDataSource(ds);
+        return sqlSFB.getObject();
+
         //指定自定义的数据源,这个必须用,否则报错
         //sqlSFB.setTypeAliasesPackage(env.getProperty("mybatis.typeAliasesPackage"));
         //指定对应的实体包,多个包之间逗号隔开
@@ -108,7 +110,6 @@ public class DataSourceConfig {
                 env.getProperty("mybatis.mapperLocations"));
         sqlSFB.setMapperLocations(mapperLocations);*/
         //指定mybatis的库表到实体的映射xml文件的mapper资源
-        return sqlSFB.getObject();
     }
 
     /**

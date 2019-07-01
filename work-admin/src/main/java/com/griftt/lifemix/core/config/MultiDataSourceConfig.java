@@ -9,9 +9,9 @@ import com.alibaba.druid.support.spring.stat.DruidStatInterceptor;
 import com.griftt.lifemix.core.properties.DuridConfigProperties;
 import com.griftt.lifemix.core.properties.SQLConnectParmter;
 import com.griftt.lifemix.multidatasource.DynamicDataSource;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.annotation.Around;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.JdkRegexpMethodPointcut;
@@ -32,6 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
+@Slf4j
 @ConditionalOnProperty(prefix = "guns.muti-datasource", name = "open", havingValue = "true", matchIfMissing = true)
 public class MultiDataSourceConfig {
     /**
@@ -60,8 +61,8 @@ public class MultiDataSourceConfig {
     private ApplicationContext applicationContext;
 
     //获取数据默认数据库配置
-    @Bean
-   public DruidDataSource primaryDataSource(@Qualifier("duridConfigProperties")  DuridConfigProperties duridConfigProperties){
+    //@Primary    //当有多个实现时以此为优先为准
+    public DruidDataSource primaryDataSource(@Qualifier("duridConfigProperties")  DuridConfigProperties duridConfigProperties){
        DruidDataSource druidDataSource = new DruidDataSource();
        //log.info("数据源信息加载");
        String profile = applicationContext.getEnvironment().getActiveProfiles()[0];
@@ -89,13 +90,14 @@ public class MultiDataSourceConfig {
     }
 
 
-    @Bean
+
     public  DruidDataSource multiDataSource(@Qualifier("mutiDataSourceProperties")  MutiDataSourceProperties mutiDataSourceProperties){
         DruidDataSource druidDataSource = new DruidDataSource();
         mutiDataSourceProperties.config(druidDataSource);
         return druidDataSource;
 
     }
+
 
     /**
      * 开始多数据源配置
@@ -104,13 +106,13 @@ public class MultiDataSourceConfig {
      */
     //注入多数据源的切换类
     @Bean
-    public DynamicDataSource createMultiDataSource(@Qualifier("primaryDataSource") DruidDataSource dataSource,
-                                                   @Qualifier("multiDataSource")  DruidDataSource multiDataSource  ){
-        /*System.err.println(duridConfigProperties);
+    public DynamicDataSource createMultiDataSource(@Qualifier("duridConfigProperties")  DuridConfigProperties duridConfigProperties,
+                                                   @Qualifier("mutiDataSourceProperties")  MutiDataSourceProperties mutiDataSourceProperties  ){
+        System.err.println(duridConfigProperties);
         System.err.println(mutiDataSourceProperties);
         //配置数据源
         DruidDataSource dataSource = primaryDataSource(duridConfigProperties);
-        DruidDataSource multiDataSource = multiDataSource(mutiDataSourceProperties);*/
+        DruidDataSource multiDataSource = multiDataSource(mutiDataSourceProperties);
         DynamicDataSource dynamicDataSource = new DynamicDataSource();
         try {
             dataSource.init();
@@ -128,9 +130,6 @@ public class MultiDataSourceConfig {
         return dynamicDataSource;
 
     }
-
-
-
 
     /**
      *

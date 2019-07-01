@@ -41,7 +41,8 @@ public class DataSouceAop implements Ordered {
         if(!(signature instanceof MethodSignature)){
                   throw new RuntimeException();
         }
-        MethodSignature methodSignature = (MethodSignature) signature;
+        String dataSourceType =null;
+                MethodSignature methodSignature = (MethodSignature) signature;
         //获取当前类
         Class<?> targetClass = point.getTarget().getClass();
         Method currentMethod = targetClass.getMethod(methodSignature.getName(), methodSignature.getParameterTypes());
@@ -50,6 +51,7 @@ public class DataSouceAop implements Ordered {
             DataSourceContextHolder.setDataSourceType(datasource.name());
             log.info("设置数据源为：" + datasource.name());
         } else {
+             dataSourceType = DataSourceContextHolder.getDataSourceType();
             DataSourceContextHolder.setDataSourceType(mutiDataSourceProperties.getDataSourceNames()[0]);
             log.info("设置数据源为：dataSourceCurrent");
         }
@@ -58,6 +60,8 @@ public class DataSouceAop implements Ordered {
         } finally {
             log.info("清空数据源信息！");
             DataSourceContextHolder.clearDataSourceType();
+            /*log.info("恢复为默认数据源信息!");
+            DataSourceContextHolder.setDataSourceType(dataSourceType);*/
         }
 
     }
@@ -68,6 +72,6 @@ public class DataSouceAop implements Ordered {
      */
     @Override
     public int getOrder() {
-        return 1;
+        return -11;
     }
 }

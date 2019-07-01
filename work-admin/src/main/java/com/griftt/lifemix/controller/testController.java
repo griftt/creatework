@@ -3,6 +3,7 @@ package com.griftt.lifemix.controller;
 import com.griftt.biz.annotation.DataSource;
 import com.griftt.biz.entity.Activity;
 import com.griftt.biz.servcie.ActivityService;
+import com.griftt.biz.servcie.WorkService;
 import com.griftt.lifemix.admin.model.WorkTypeOne;
 import com.griftt.biz.annotation.Hello;
 import com.griftt.lifemix.core.properties.DuridConfigProperties;
@@ -29,6 +30,9 @@ public class testController {
     @Autowired
     private WorkTypeOne workTypeOne;
 
+    @Autowired
+    private WorkService workService;
+
 
     @RequestMapping("/hello")
     @ResponseBody
@@ -39,6 +43,7 @@ public class testController {
        // System.err.println(actictyList2);
         return actictyList;
     }
+
 
     @RequestMapping("/hello2")
     @ResponseBody
@@ -51,7 +56,6 @@ public class testController {
 
     @RequestMapping("/aop")
     @ResponseBody
-    @Hello
     public Object aop(){
         List<Activity> actictyList = activityService.getActictyListMapper();
         System.err.println(actictyList);
@@ -59,13 +63,20 @@ public class testController {
     }
 
 
-    @RequestMapping("/tra")
+    @RequestMapping("/multi")
     @ResponseBody
     public Object tra(){
-        activityService.updateOne();
-        activityService.updateTwo();
+        workService.primaryDataTran();
         return "ok";
     }
+
+
+   /* @RequestMapping("/pri")
+    @ResponseBody
+    public Object tra2(){
+        activityService.primaryDataTran();
+        return "ok";
+    }*/
 
     public testController() {
         System.err.println("controller 实例化");
