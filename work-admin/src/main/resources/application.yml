@@ -1,5 +1,5 @@
 server:
-  port: 8181
+  port: 8080
   max-http-header-size: 10240
   #servlet:
    #   context-path: /admin
@@ -89,7 +89,7 @@ spring:
 
 guns:
   muti-datasource:
-    open: true
+    open:false 
     url: jdbc:mysql://localhost:3306/eureka?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
     username: root
     password: 123456
