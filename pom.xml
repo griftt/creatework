@@ -22,7 +22,7 @@
     <properties>
         <java.version>1.8</java.version>
         <mybatis-plus.version>3.1.0</mybatis-plus.version>
-        <mysql-connector-java.version>8.0.11</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
         <binarywang.version>3.3.0</binarywang.version>
         <lombok.version>1.18.6</lombok.version>
         <com.google.zxing.version>3.3.1</com.google.zxing.version>
